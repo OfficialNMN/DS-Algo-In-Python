@@ -13,5 +13,4 @@ def BinarySearch(arr,n,num):
             right=mid-1
     return -1
 
-print(BinarySearch([1,2,3,4,5],5,4))
         
