@@ -36,13 +36,3 @@ def Sieve(n):
 	for p in range(2,n+1):
 		if prime[p]:
 			print(p)
-
-# To calculate square root of a number
-# TimeComplexity----O(n)
-
-def root(n):
-    for i in range(n+1):
-        if (i*i==n):
-            return i
-        if (i*i>n):
-            return i-1
