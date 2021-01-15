@@ -7,7 +7,6 @@ def ispowerof2(n):
     return x and y
 
 
-
 # To count number of bits in a binary number
 def count_bits(n):
 	s=str(bin(5))[2:]
