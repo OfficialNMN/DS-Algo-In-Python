@@ -13,7 +13,7 @@ def sack(W,wt,profit,n):
 		for w in range(W+1):
 			if i==0 or w==0:
 				k[i][w]=0
-			elif wt[i-1] <= w:          # means that if bag capacity is greater than wieght of current item
+			elif wt[i-1] <= w:              # means that if bag capacity is greater than wieght of current item
 				k[i][w]=max(profit[i-1]+k[i-1][w-wt[i-1]],k[i-1][w])
 			else:
 				k[i][w]=k[i-1][w]       # if not then fill in the previous value
