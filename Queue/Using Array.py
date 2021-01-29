@@ -1,10 +1,8 @@
-''' Queue using Deque of collections '''
-
-from collections import deque
+''' Queue using Array '''
 
 class Queue:
 	def __init__(self,maxsize):
-		self.queue=deque()
+		self.queue=[]
 		self.maxsize=maxsize
 
 	def enqueue(self,value):
@@ -17,7 +15,7 @@ class Queue:
 		if self.isEmpty():
 			print('UnderflowError')
 		else:
-			self.queue.popleft()
+			self.queue.pop(0)
 
 	def traverse(self):
 		return self.queue
