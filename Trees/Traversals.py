@@ -23,21 +23,21 @@ def preorder(rootnode):
 preorder(Btree)
 
 # InOrder Traversal (LSR)
-def preorder(rootnode):
+def inorder(rootnode):
 	if not rootnode:
 		return 	
 	preorder(rootnode.leftchild)
 	print(rootnode.data)
 	preorder(rootnode.rightchild)
 
-preorder(Btree)
+inorder(Btree)
 
 # PostOrder Traversal (LRS)
-def preorder(rootnode):
+def postorder(rootnode):
 	if not rootnode:
 		return 	
 	preorder(rootnode.leftchild)	
 	preorder(rootnode.rightchild)
 	print(rootnode.data)
 
-preorder(Btree)
+postorder(Btree)
