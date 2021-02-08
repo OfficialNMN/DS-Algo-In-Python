@@ -1,4 +1,5 @@
 # Using LinkedLists
+
 class TreeNode:
 	def __init__(self,data):
 		self.data=data
@@ -11,12 +12,32 @@ rightchild=TreeNode("Cold")
 Btree.leftchild=leftchild
 Btree.rightchild=rightchild
 
-# PreOrder Traversal
+# PreOrder Traversal (SLR)
 def preorder(rootnode):
 	if not rootnode:
 		return 
 	print(rootnode.data)
 	preorder(rootnode.leftchild)
 	preorder(rootnode.rightchild)
+
+preorder(Btree)
+
+# InOrder Traversal (LSR)
+def preorder(rootnode):
+	if not rootnode:
+		return 	
+	preorder(rootnode.leftchild)
+	print(rootnode.data)
+	preorder(rootnode.rightchild)
+
+preorder(Btree)
+
+# PostOrder Traversal (LRS)
+def preorder(rootnode):
+	if not rootnode:
+		return 	
+	preorder(rootnode.leftchild)	
+	preorder(rootnode.rightchild)
+	print(rootnode.data)
 
 preorder(Btree)
