@@ -2,17 +2,18 @@
 
 ''' Top Down Approach(Recursive) focuses on breaking down a big problem into smaller and understandable chunks '''
 
-def Memofib(n,memo):
-	if n==1:
+def fibonacci(n,memo):
+	if n==0:
 		return 0
-	if n==2:
+	if n==1:
 		return 1
-	if not n in memo:
-		memo[n]=Memofib(n-1,memo)+Memofib(n-2,memo)
+	if n not in memo:
+		memo[n]=fibonacci(n-1,memo)+fibonacci(n-2,memo)
 	return memo[n]
 
-mydict={}
-print(Memofib(5,mydict))
+my_dict={}
+print(fibonacci(9,my_dict))
+
 
 ''' Bottom Up Approach(Tabulation) first focuses on solving the smaller problems at the fundamental level and then integrating them into a whole and complete solution '''
 
