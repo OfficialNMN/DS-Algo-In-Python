@@ -3,10 +3,8 @@
 ''' Top Down Approach(Recursive) focuses on breaking down a big problem into smaller and understandable chunks '''
 
 def fibonacci(n,memo):
-	if n==0:
-		return 0
-	if n==1:
-		return 1
+	if n==0 or n==1:
+		return n
 	if n not in memo:
 		memo[n]=fibonacci(n-1,memo)+fibonacci(n-2,memo)
 	return memo[n]
