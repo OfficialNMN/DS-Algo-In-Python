@@ -108,18 +108,39 @@ class LinkedList:
 		while(fast.next!=None and fast.next.next!=None):
 			slow=slow.next
 			fast=fast.next.next
-		return slow
+		return slow.data
+
+	def palindrome_util(self,string):
+		return (string==string[::-1])
+
+	def isPalindrome(self):
+		# creating an array to store elements and then use that array to form a string which can be further compared with its reverse to check palindrome
+		current=self.head
+		arr=[]
+		while current:
+			arr.append(str(current.data))
+			current=current.next
+		string="".join(arr)
+		return self.palindrome_util(string)
+
 
 l=LinkedList()
-l.insert_at_start(2)
-l.insert_at_last(4)
-l.insert_after_node(l.head.next,3)
-l.delete(5)
-l.insert_at_start(1)
+l.insert_at_start('bc')
+l.insert_at_last('dcb')
+l.insert_after_node(l.head,'d')
+l.insert_at_last('a')
+l.insert_at_start('a')
+# l.delete(3)
 l.traverse()
 # l.head.next.next.next.next = l.head       # creating a loop to check 
-print(l.detectloop())
-print(l.search(4))
-l.reverse()
-l.traverse()
+# print(l.detectloop())                     # detect loop
+# print(l.search(4))			    # searching 
+# l.reverse()				    # reversing
+# l.traverse()							
+# print(f'mid : {l.midpoint()}')            # getting midpoint
+print(l.isPalindrome())			    # checking palindrome
+
+
+
+
 
