@@ -6,11 +6,11 @@ class Node:
 class LinkedList:
 	def __init__(self):
 		self.head=None                  
-	
+		
 	def traverse(self):
 		current=self.head
 		while current is not None:
-			print(current.data)
+			print(current.data,end=' ')
 			current=current.next
 
 	def insert_at_start(self,data):
@@ -44,6 +44,7 @@ class LinkedList:
 			last.next=newnode
 
 	def delete(self,location):
+		# if list is empty
 		if self.head is None:
 			return 
 		temp=self.head
@@ -111,6 +112,7 @@ class LinkedList:
 		return slow.data
 
 	def palindrome_util(self,string):
+		# comparing the reverse 
 		return (string==string[::-1])
 
 	def isPalindrome(self):
@@ -123,24 +125,121 @@ class LinkedList:
 		string="".join(arr)
 		return self.palindrome_util(string)
 
+	def RemoveDuplicates(self):
+		current=self.head
+		if current is None:
+			return 
+		while current.next is not None:
+			if current.data==current.next.data:
+				# so that list is not lost after deleting duplicate element
+				lost=current.next.next
+				# deleting duplicate
+				current.next=None
+				current.next=lost
+			else:
+				current=current.next
+
+	def merge2sorted(self,headA,headB):
+		# dummy to store result list
+		dummy=Node(0)
+		# tail to keep track of last element of result list
+		tail = dummy
+		while(True):
+			if headA is None:
+				tail.next=headB
+				break
+			if headB is None:
+				tail.next=headA
+				break
+
+			if headA.data<=headB.data:
+				tail.next=headA
+				headA=headA.next
+			else:
+				tail.next=headB
+				headB=headB.next
+
+			# increase the tail
+			tail=tail.next
+		# return next of dummy as it is starting of merges list
+		return dummy.next
+
+	def even_odd_segregate(self):
+		evenstart=None
+		evenend=None
+		oddstart=None
+		oddend=None
+		current=self.head
+
+		while (current):
+			val=current.data
+			# if value is even inserting in even list
+			if (val%2)==0:
+				if (evenstart==None):
+					evenstart=current
+					evenend=evenstart
+				else:
+					evenend.next=current
+					evenend=evenend.next
+			# if value is odd inserting in odd list
+			else:
+				if (oddstart==None):
+					oddstart=current
+					oddend=oddstart
+				else:
+					oddend.next=current
+					oddend=oddend.next
+			current=current.next
+
+		# if anyone of odd or even list is empty
+		if(oddstart==None or evenstart==None):
+			return
+		# appending the starting of odd to end of even
+		evenend.next=oddstart
+		oddend.next=None
+		# setting head as evenstart
+		self.head=evenstart
+
 
 l=LinkedList()
-l.insert_at_start('bc')
-l.insert_at_last('dcb')
-l.insert_after_node(l.head,'d')
-l.insert_at_last('a')
-l.insert_at_start('a')
-# l.delete(3)
+l1=LinkedList()
+
+l.insert_at_start(1)
+l.insert_at_last(2)
+l.insert_at_last(3)
+l.insert_at_last(4)
+l.insert_at_last(5)
+l.insert_at_last(6)
+
+# l.insert_after_node(l.head,2)
+# deletion
+# l.delete('a')
+
+# creating a loop to check 
+# l.head.next.next.next.next = l.head    
+
+# detect loop
+# print(l.detectloop()) 
+
+# searching 
+# print(l.search(4))
+
+# reversing
+# l.reverse()								
+# l.traverse()	
+
+# getting midpoint						
+# print(f'mid : {l.midpoint()}')
+
+# checking palindrome			
+# print(l.isPalindrome())
+
+# remove duplicates			    
+# l.RemoveDuplicates()
+
+# merging 2 sorted lists                      
+# l.head=l.merge2sorted(l.head,l1.head)     
+
+# segregation with even nodes followed by odd nodes
+# l.even_odd_segregate()
 l.traverse()
-# l.head.next.next.next.next = l.head       # creating a loop to check 
-# print(l.detectloop())                     # detect loop
-# print(l.search(4))			    # searching 
-# l.reverse()				    # reversing
-# l.traverse()							
-# print(f'mid : {l.midpoint()}')            # getting midpoint
-print(l.isPalindrome())			    # checking palindrome
-
-
-
-
-
