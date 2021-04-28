@@ -65,8 +65,7 @@ class LinkedList:
 		new_next=temp.next.next
 		# temp.next is to be unlinked 
 		temp.next=None
-		temp.next=new_next
-		
+		temp.next=new_next	
 
 	def search(self,value):
 		node=self.head
@@ -94,14 +93,27 @@ class LinkedList:
 		self.head=prev
 
 	def detectloop(self):
-		s=set()
-		temp=self.head
-		while(temp):
-			if temp in s:
+		slow=fast=self.head
+		while(slow and fast and fast.next):
+			slow=slow.next
+			fast=fast.next.next
+			if slow==fast:
 				return True
-			s.add(temp)
-			temp=temp.next
 		return False
+
+	def removeloop(self,loop_node):
+		ptr1=self.head
+		while (1):
+			ptr2=loop_node
+			# start from loop_node and check 
+			while (ptr2.next!=loop_node and ptr2.next!=ptr1):
+				ptr2=ptr2.next
+			# if ptr2 reaches ptr1 then there is loop so break it
+			if ptr2.next==ptr1:
+				break
+			ptr1=ptr1.next
+		# ptr2 will be the last node so make the next of it null
+		ptr2.next=None
 	
 	def midpoint(self):
 		fast=self.head
@@ -119,7 +131,7 @@ class LinkedList:
 		# creating an array to store elements and then use that array to form a string which can be further compared with its reverse to check palindrome
 		current=self.head
 		arr=[]
-		while current:
+		while current is not None:
 			arr.append(str(current.data))
 			current=current.next
 		string="".join(arr)
@@ -243,3 +255,5 @@ l.insert_at_last(6)
 # segregation with even nodes followed by odd nodes
 # l.even_odd_segregate()
 l.traverse()
+
+
