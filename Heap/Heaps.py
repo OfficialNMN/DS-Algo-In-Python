@@ -1,14 +1,17 @@
+import heapq as hq
+
 ''' Heap data structure is mainly used to represent a priority queue.
 The property of this data structure in Python is that each time the smallest of heap element 
 is popped(min heap). Whenever elements are pushed or popped, heap structure 
 in maintained. '''
 
+# A heap is visualised as a complete binary tree with heap properties and stored in form of an array
 
 class MinHeap:
 	def __init__(self,capacity):
 		self.storage=[0]*capacity   # array to store heap elements
 		self.capacity=capacity      # max-size of heap
-		self.size=size              # to keep track of current size
+		self.size=0              	# to keep track of current size
 
 	def getParentIndex(self,index):
 		return (index-1)//2
@@ -33,10 +36,15 @@ class MinHeap:
 
 	def isFull(self):
 		return self.size==self.capacity
+
 	def swap(self,index1,index2):
-		temp=self.storage[index1]
-		self.storage[index1]=self.storage[index2]
-		self.storage[index2]=temp
+		self.storage[index1],self.storage[index2]=self.storage[index2],self.storage[index1]
+
+	def isEmpty(self):
+		return self.size==0
+		
+	def get_size(self):
+		return self.size
 
 	def insert(self,data):
 		if(self.isFull()):
@@ -71,6 +79,20 @@ class MinHeap:
 			else:
 				self.swap(index,smallerChildIndex)
 			index=smallerChildIndex
-      
-      
-      
+
+	def print_heap(self):
+		return self.storage
+
+
+heap=MinHeap(4)
+heap.insert(4)
+heap.insert(2)
+heap.insert(6)
+heap.insert(9)
+
+print(heap.print_heap())
+
+# print(heap.isEmpty())
+
+# print(heap.removeMin())
+
