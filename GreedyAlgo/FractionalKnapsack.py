@@ -1,4 +1,5 @@
-# Fractional Knapsack Problem----> A thief has to steal items with maximum worth within a limit of certain weight(kg) in the bag.
+# Fractional Knapsack Problem----> A thief has to steal items with maximum 
+# worth within a limit of certain weight(kg) in the bag.
 
 class Item:
 	def __init__(self,weight,value):
