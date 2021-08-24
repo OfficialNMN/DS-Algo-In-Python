@@ -1,4 +1,4 @@
-# To segregate even and odd nodes [resent in a linkedlist
+# To segregate even and odd nodes present in a linkedlist
 
 def even_odd_segregate(head):
 	evenstart=None

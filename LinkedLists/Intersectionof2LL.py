@@ -32,3 +32,19 @@ def intersetPoint(head1,head2):
         long=long.next
         short=short.next
     return long.data
+
+# Optimal Approach
+# Even if there is no intersection, the 2 pointers will become null at same time
+
+def getIntersectionNode(headA, headB):
+    if headA==None or headB==None:
+        return None
+    a=headA
+    b=headB
+    # if a and b have diff length the loop will stop after second iteration
+    while(a!=b):
+        # if a pointer becomes null reinitialize it to head of other List
+        # else continue traversing the list  
+        a = headB if a is None else a.next
+        b = headA if b is None else b.next
+    return a

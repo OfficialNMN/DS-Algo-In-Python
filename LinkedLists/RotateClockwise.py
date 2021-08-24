@@ -1,25 +1,21 @@
 def rotate(head,k):
-    if head is None:
-        return 
-    # to calculate size
-    temp=head
-    size=1
-    while temp.nxt!=None:
-        temp=temp.nxt
-        size+=1
-    if k>size:
-        k=k%size
-    k=size-k
-    if (k==0 or k==size):
+    if (head is None or head.next is None or k==0):
         return head
-    
-    current=head
+    # calculating length of list
+    curr=head
     count=1
-    while(count<k and current is not None):
-        current=current.nxt
+    while(curr.next!=None):
         count+=1
-    kthnode=current
-    temp.nxt=head
-    head=kthnode.nxt
-    kthnode.nxt=None
+        curr=curr.next
+    # connecting last node to head
+    curr.next=head
+    k=k%count
+    k=count-k
+    while(k>0):
+        curr=curr.next
+        k-=1
+    # making next node of current as head
+    head=curr.next
+    # current will be the last node
+    curr.next=None
     return head

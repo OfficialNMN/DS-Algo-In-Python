@@ -12,5 +12,5 @@ def reverse(head):
 		# move forward for same tasks
 		prev=current
 		current=forward
-	# making prev as new head
-	head=prev
+	# prev will be the new head
+	return prev
