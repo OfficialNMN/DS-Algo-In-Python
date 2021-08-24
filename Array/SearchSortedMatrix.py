@@ -23,3 +23,25 @@ def search(ele):
 
 search(43) 
 
+# LeetCode version in this the 1st element of every row is greater than last
+# element of previous row
+
+def searchMatrix(matrix, target):
+    if len(matrix)==0:
+        return False
+    n=len(matrix)
+    m=len(matrix[0])
+    # using binary search on whole matrix
+    low=0
+    high=(n*m)-1
+    while(low<=high):
+        mid=(low+high)//2
+        # row index of element is mid//m
+        # column index is mid%m
+        if matrix[mid//m][mid%m]==target:
+            return True
+        elif matrix[mid//m][mid%m]>target:
+            high-=1
+        else:
+            low+=1
+    return False 

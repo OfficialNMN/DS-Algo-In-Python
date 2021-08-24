@@ -1,19 +1,23 @@
-def totalwater(arr,n):
-	water=0
-	for i in range(1,n-1):
-		leftmax=arr[i]
-		for j in range(i):
-			leftmax=max(leftmax,arr[j])
+'''Trapping Rain Water'''
 
-		rightmax=arr[i]
-		for j in range(i+1,n):
-			rightmax=max(rightmax,arr[j])
-
-		water=water+(min(leftmax,rightmax)-arr[i])
-
-	return water
-
-print(totalwater([3, 0, 2, 0, 4],5))
-
-# TimeComplexity----O(n^2)
+# TimeComplexity----O(n)
 # SpaceComplexity---O(1)
+
+def trappingWater( arr,n):
+    lmax=[0 for i in range(n)]
+    rmax=[0 for i in range(n)]
+    water=0
+    # leftmax array
+    lmax[0]+=arr[0]
+    for i in range(1,n):
+        lmax[i]+=max(arr[i],lmax[i-1])
+    # rightmax array
+    rmax[-1]+=arr[n-1]
+    for i in range(n-2,-1,-1):
+        rmax[i]+=max(arr[i],rmax[i+1])
+    for i in range(n):
+        # water stored is min(left,right)-a[i]
+        water+=min(lmax[i],rmax[i])-arr[i]
+    return water
+
+print(trappingWater([3, 0, 2, 0, 4],5))
