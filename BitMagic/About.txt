@@ -1,6 +1,0 @@
-Bitwise operator and - &
-Bitwise operator or - |
-Bitwise operator not - ~
-Bitwise operator xor - ^
-Bitwise operator right shift (>>) - divide in power of 2
-Bitwise operator left shift  (<<) - multiply in power of 2
