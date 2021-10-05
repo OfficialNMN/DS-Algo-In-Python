@@ -8,8 +8,10 @@ class TreeNode:
 def printKDistant(root, k):
     if root is None or k<0:
         return 
+    # if k is achieved
     if k == 0:
         print(root.data)
+    # otherwise look in left and right subtrees
     else:
         printKDistant(root.left, k-1)
         printKDistant(root.right, k-1)

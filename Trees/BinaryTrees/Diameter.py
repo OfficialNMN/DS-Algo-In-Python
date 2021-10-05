@@ -4,27 +4,19 @@ class TreeNode:
 		self.left=None
 		self.right=None
 
-def height(root):
-	if root==None:
-		return 0    
-	lh=height(root.left)
-	rh=height(root.right)
-	return max(lh,rh)+1
+def diameterOfBinaryTree(root):
+    diameter=[0]
+    height(root,diameter)
+    return diameter[0]
+    
 
-
-# Diameter of a binary tree is the longest distance b/w any two nodes
-def diameter(root):
-	if root is None:
-		return 0
-	# case-1 When diameter is leftheight + rightheight
-	lheight=height(root.left)
-	rheight=height(root.right)
-	# case-2 when diameter lies on left side only
-	ldiameter=diameter(root.left)
-	# case-3 when diameter lies on right side only
-	rdiameter=diameter(root.right)
-	# we have to retrun the max of these 3 cases
-	return max(lheight+rheight+1,max(ldiameter,rdiameter)) 
+def height(root,diameter):
+    if root is None:
+        return 0
+    lh=height(root.left,diameter)
+    rh=height(root.right,diameter)
+    diameter[0]=max(diameter[0],lh+rh)
+    return 1+max(lh,rh)
 
 root = TreeNode(1)
 root.left = TreeNode(2)

@@ -45,3 +45,8 @@ root.right = TreeNode(3)
 root.left.left = TreeNode(4)
 root.left.right = TreeNode(5)
 
+# recursive 
+def postOrder(root):
+    if root is None:
+        return []
+    return postOrder(root.left)+postOrder(root.right)+[root.data]

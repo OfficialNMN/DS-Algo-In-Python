@@ -11,11 +11,10 @@ def width(root,hl,ans):
 	# creating an array to store left hl and right hl
 	ans[0]=min(ans[0],hl)
 	ans[1]=max(ans[1],hl)
-	# when going to left hl=hl-1
+	# going to left hl=hl-1
 	width(root.left,hl-1,ans)
-	# when going to right hl=hl+1 
+	# going to right hl=hl+1 
 	width(root.right,hl+1,ans)
-	# width = ans[1]-ans[0]+1
 	return ans[1]-ans[0]+1
 
 def verticalorderhelper(root,hl,m):
@@ -32,11 +31,13 @@ def verticalorderhelper(root,hl,m):
 def verticalorder(root):
 	m={}
 	hl=0
+	ans=[]
 	verticalorderhelper(root,hl,m)
 	for index,value in enumerate(sorted(m)):
 		for j in m[value]:
 			print(j,end=' ')
 		print()
+
 
 root = TreeNode(1)
 root.left = TreeNode(2)
