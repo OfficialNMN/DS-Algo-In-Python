@@ -1,0 +1,2 @@
+def mincostpath():
+	pass
