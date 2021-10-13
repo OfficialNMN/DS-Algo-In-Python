@@ -1,5 +1,5 @@
 # To find whether a number is prime or not
-# TimeComplexity----O(n)
+# TimeComplexity--->-O(n)
 
 def isprime(n):
 	for i in range(2,n):
@@ -7,18 +7,15 @@ def isprime(n):
 			return False
 	return True
 
-# To find all prime numbers upto a given number
-
-# Method 1.
-# TimeComplexity----O(n*sqrt(n))
+# TimeComplexity---->O(n*sqrt(n))
 
 def PrintAllPrime(n):
 	for i in range(2,n+1):
 		if (isprime(i)):
 			print(i)
 
-# Method 2. SieveOfEratosthenes
-# TimeComplexity----O(n*log(log(n)))
+# SieveOfEratosthenes
+# TimeComplexity---->O(n*log(log(n)))
 
 def Sieve(n):
 	# Create a boolean array "prime[0..n]" and initialize all entries it as true
@@ -36,3 +33,11 @@ def Sieve(n):
 	for p in range(2,n+1):
 		if prime[p]:
 			print(p)
+
+# To find LCM(smallest divisible numbers) of all N numbers with input N
+
+def lcm(N):
+	ans=1
+	for i in range(1,n+1):
+		ans=(int(ans*i)/math.gcd(ans,i))
+	return ans 
