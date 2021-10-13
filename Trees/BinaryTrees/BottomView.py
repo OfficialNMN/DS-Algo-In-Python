@@ -14,13 +14,13 @@ def bottomView(root):
 	while q:
 		c=q.pop(0)
 		node=c[0]
-		vl=c[1]
+		hl=c[1]
 		# update the vertical level node in map
-		m[vl]=[node.data]
+		m[hl]=[node.data]
 		if node.left is not None:
-			q.append([node.left,vl-1])
+			q.append([node.left,hl-1])
 		if node.right is not None:
-			q.append([node.right,vl+1])
+			q.append([node.right,hl+1])
 	for i in sorted(m.keys()):
 		ans.append(m[i][0])
 	return ans

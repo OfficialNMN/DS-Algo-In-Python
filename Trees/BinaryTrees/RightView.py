@@ -4,30 +4,25 @@ class TreeNode:
 		self.left=None
 		self.right=None
 
-def RightView(root):
-	if root is None:
-	    return  
-	# empty queue for level order traversal
-	queue = []
-	queue.append(root)
-	while(len(queue) > 0):
-		size=len(queue)
-		# Traversing the current level of tree
-		for i in range(1,size+1):
-			# printing the rightmost element of queue
-			node = queue.pop(0)
-			if i==size:
-				print(node.data)
-        	#Enqueue left child
-			if node.left is not None:
-				queue.append(node.left)
-        	# Enqueue right child
-			if node.right is not None:
-				queue.append(node.right)
-				
+def rightSideView(root):
+    ans=[]
+    level=0
+    traverse(root,level,ans)
+    return ans
+
+# doing level order traversal and adding the first node at every level
+def traverse(node,level,ans):
+    if node is None:
+        return
+    if level==len(ans):
+        ans.append(node.data)
+    traverse(node.right,level+1,ans)
+    traverse(node.left,level+1,ans)
+
 root = TreeNode(1)
 root.left = TreeNode(2)
 root.right = TreeNode(3)
 root.left.left = TreeNode(4)
 root.left.right = TreeNode(5)
-RightView(root)
+
+print(rightSideView(root))

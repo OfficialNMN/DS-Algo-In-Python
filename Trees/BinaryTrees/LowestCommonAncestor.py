@@ -23,7 +23,7 @@ def LCA(root,n1,n2):
 	if left_lca is not None and right_lca is not None:
 		return root.data
 
-	# If both keys lie in the left subtree, then the left subtree has LCA also, 
+	# If both keys lie in the left subtree, then the left subtree has LCA , 
 	# otherwise, LCA lies in the right subtree.  
 	return left_lca if left_lca is not None else right_lca
 

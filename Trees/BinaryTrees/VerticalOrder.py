@@ -50,3 +50,4 @@ root.right.left.right = TreeNode(8)
 root.right.right.right = TreeNode(9)
 
 verticalorder(root)
+# print(width(root,0,[0,0]))

@@ -4,29 +4,26 @@ class TreeNode:
 		self.left=None
 		self.right=None
 
-def LeftView(root):
-	if root is None:
-	    return  
-	# arr to store left nodes
-	arr=[]
-	# empty queue for level order traversal
-	queue = []
-	queue.append(root)
-	while(len(queue)):
-		n=len(queue)
-		arr.append(queue[0].data)
-		while(n>0):
-			n-=1
-			node=queue.pop(0)
-			if (node.left is not None):
-				queue.append(node.left)
-			if (node.right is not None):
-				queue.append(node.right)
-	return arr
-				
+def leftSideView(root):
+    ans=[]
+    level=0
+    traverse(root,level,ans)
+    return ans
+
+# doing level order traversal and adding the first node at every level
+def traverse(node,level,ans):
+    if node is None:
+        return
+    if level==len(ans):
+        ans.append(node.data)
+    traverse(node.left,level+1,ans)
+    traverse(node.right,level+1,ans)
+    
+
 root = TreeNode(1)
 root.left = TreeNode(2)
 root.right = TreeNode(3)
 root.left.left = TreeNode(4)
 root.left.right = TreeNode(5)
-print(LeftView(root))
+
+print(leftSideView(root))
