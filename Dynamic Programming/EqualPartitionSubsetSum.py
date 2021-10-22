@@ -27,7 +27,7 @@ def subset(N,arr,sum):
          if arr[i-1]<=j:
             dp[i][j]=dp[i-1][j-arr[i-1]] or dp[i-1][j]
           # when element will be skipped
-         elif arr[i-1]>j:
+         else:
             dp[i][j]=dp[i-1][j]
    
    return dp[N][sum]

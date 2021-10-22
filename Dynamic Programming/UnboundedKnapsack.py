@@ -1,4 +1,12 @@
-''' This is similar to knapsack but here we can take any number of weights in the 
+''' Unbounded Knapsack Problem 
+W - capacity of bag
+n - number of total items
+profit - profit of each item
+wt -  weight of each item'''
+
+# Time Complexity: O(n*W)
+
+''' This is similar to knapsack but here we can take unlimited number of items in the 
 bag to maximise the profit. '''
 
 def unboundKnap(W,wt,profit,n):
@@ -8,10 +16,9 @@ def unboundKnap(W,wt,profit,n):
 		for w in range(W+1):
 			if i==0 or w==0:
 				dp[i][w]=0
-			# replacing i by i-1 since unlimited items are present
+			# replacing i by (i-1) since unlimited items are present
 			elif wt[i-1] <= w:          
 				dp[i][w]=max(profit[i-1]+dp[i][w-wt[i-1]],dp[i-1][w])
-			# if not then fill in the previous value
 			else:
 				dp[i][w]=dp[i-1][w]       
 	return dp[-1][-1]

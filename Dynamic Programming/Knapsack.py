@@ -7,7 +7,7 @@ wt -  weight of each item'''
 # Time Complexity: O(n*W) using BottomUp Approach 
 
 def sack(W,wt,profit,n):
-	# building empty (n+1 X W+1) i.e (items X weight) matrix to fill profit values as wt increases
+	# building empty (n+1 X W+1) i.e (no. of items X capacity) matrix to fill profit values as wt increases
 	dp=[[0 for i in range(W+1)] for i in range(n+1)]
 	for i in range(n+1):
 		for w in range(W+1):
