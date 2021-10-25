@@ -1,37 +1,41 @@
 from collections import defaultdict
 
-# using BFS to detect cycle in the directed graph
+# using BFS to detect cycle in the directed adjList
 
 class Graph:
 	# using dict as adjacency list
-	def __init__(self,vertices):
-		self.graph=defaultdict(list)
-		self.vertices=vertices
+	def __init__(self,v):
+		self.adjList=defaultdict(list)
+		self.v=v
 
 	def addEdge(self,v,w):
-		self.graph[v].append(w)
+		self.adjList[v].append(w)
 
 	# using dfs approach to check whether a particular call is already is recursion stack or not 
-	def dfs(self,graph,v,visited,recursionStack):
+	def dfs_cycle(self,adjList,v,visited,dfs_visited):
 		visited[v]=True
-		recursionStack[v]=True
-		for adj in self.graph[v]:
-			if (visited[adj]==False and self.dfs(graph,adj,visited,recursionStack)==True):
+		dfs_visited[v]=True
+		for adj in self.adjList[v]:
+			# if the node is not visited check it using dfs_cycle
+			if (visited[adj]==False and self.dfs_cycle(adjList,adj,visited,dfs_visited)==True):
 				return True
-			elif (recursionStack[adj]==True):
+			# if node is visited then check dfs_visited array
+			elif (dfs_visited[adj]==True):
 				return True
-		recursionStack[v]=False
+		# when backtrack make visited in dfs_visited False
+		dfs_visited[v]=False
+		# no cycle detected
 		return False		 
 
 
 	def is_cyclic(self):
-		visited=[False]*self.vertices
-		# used to maintain nodes that are currently in stack so that while 
-		# checking if a node is already in recursion stack then it will indicate a cycle
-		recursionStack=[False]*self.vertices
-		for i in range(self.vertices):
+		visited=[False]*self.v
+		# dfs_visited is used to check if a node is True both in visited and
+		# dfs_visited, then it will indicate a cycle
+		dfs_visited=[False]*self.v
+		for i in range(self.v):
 			if visited[i]==False:
-				if self.dfs(self.graph,i,visited,recursionStack) is True:
+				if self.dfs_cycle(self.adjList,i,visited,dfs_visited) is True:
 					return True
 		return False
 
@@ -42,5 +46,5 @@ g.addEdge(1, 2)
 g.addEdge(2, 0)
 g.addEdge(2, 3)
 
-print(g.graph)
+print(g.adjList)
 print(g.is_cyclic())
